@@ -789,7 +789,7 @@ def instagram_follow():
 
     for s in range(60):
         try:
-            
+
             if stop_def_instagram == 'stop':
                 print('stop_def_instagram')
                 break
@@ -797,7 +797,12 @@ def instagram_follow():
             driver.implicitly_wait(15)
             driver.find_element(By.CSS_SELECTOR, "a[class^='cursor earn_pages_button profile_view_img']").click()
             driver.switch_to.window(driver.window_handles[1])
+            
             time.sleep(2)
+            login_instgram_true_2 = driver.current_url.split('accounts/')[-1].split('/?')[0]
+            if login_instgram_true_2=='suspended':
+                print('suspended')
+                break
             try:
                 driver.find_element(By.XPATH, "//*[text()='Follow']").click()
             except:
@@ -826,7 +831,12 @@ def instagram_like():
             driver.find_element(By.CSS_SELECTOR, "a[class^='cursor earn_pages_button profile_view_img']").click()
             driver.switch_to.window(driver.window_handles[1])
             time.sleep(2)
+            login_instgram_true_3 = driver.current_url.split('accounts/')[-1].split('/?')[0]
+            if login_instgram_true_3=='suspended':
+                print('suspended_instagram_like')
+                break
             try:
+                
                 elements = driver.find_elements(By.CSS_SELECTOR, '[aria-label="Like"]')
                 last_element = elements[-1]
                 last_element.click()
