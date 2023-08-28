@@ -802,6 +802,8 @@ def instagram_follow():
             login_instgram_true_2 = driver.current_url.split('accounts/')[-1].split('/?')[0]
             if login_instgram_true_2=='suspended':
                 print('suspended')
+                driver.close()
+                driver.switch_to.window(driver.window_handles[0])
                 break
             try:
                 driver.find_element(By.XPATH, "//*[text()='Follow']").click()
@@ -834,6 +836,8 @@ def instagram_like():
             login_instgram_true_3 = driver.current_url.split('accounts/')[-1].split('/?')[0]
             if login_instgram_true_3=='suspended':
                 print('suspended_instagram_like')
+                driver.close()
+                driver.switch_to.window(driver.window_handles[0])
                 break
             try:
                 
